@@ -47,7 +47,7 @@ app.get("/app/users/", (req, res) => {
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
 app.get("/app/user/:user", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ?").get(req.bpdy.user);
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ?").get(req.body.user);
 	res.status(200).json(stmt);
 });
 
@@ -87,4 +87,15 @@ app.get("/app/user/login", (req, res) => {
 app.use(function(req, res){
 	res.json({"message":"Endpoint not found. (404)"});
     res.status(404);
+});
+
+//log in 
+app.post("/app/new/user", (req, res) => {	
+	var data = {
+		user: req.body.user,
+		pass: req.body.pass ? md5(req.body.pass): null,
+	}
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email) VALUES (?, ?, ?)")
+	const info = stmt.run(data.user, data.pass, data.email);
+	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
 });

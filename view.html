@@ -23,7 +23,7 @@ function getInfo() {
   getRequest.onload = function() {
     document.getElementById("login").innerHTML = this.responseText;
   }
-  getRequest.open("GET", "http://localhost:5000/app/user/?user=adreiko/");
+  getRequest.open("GET", "http://localhost:5000/app/user/1/");
   getRequest.send();
 }
 </script>
