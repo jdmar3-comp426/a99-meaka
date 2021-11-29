@@ -14,13 +14,13 @@ if (row === undefined) {
     console.log('Your database appears to be empty. I will initialize it now.');
 // Set a const that will contain your SQL commands to initialize the database.
     const sqlInit = `
-        CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT, email TEXT );
-		INSERT INTO userinfo (user, pass, email) VALUES ('admin','bdc87b9c894da5168059e00ebffb9077', 'admin@someDomain.com'), ('test','9241818c20435c6672dac2c4b6e6c071', 'test@someDomain.com')
+        CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT, email TEXT score INTEGER);
+		INSERT INTO userinfo (user, pass, email, score) VALUES ('admin','bdc87b9c894da5168059e00ebffb9077', 'admin@someDomain.com', 0), ('test','9241818c20435c6672dac2c4b6e6c071', 'test@someDomain.com', 0)
     `;
 // Execute SQL commands that we just wrote above.
     db.exec(sqlInit);
 // Echo information about what we just did to the console.
-    console.log('Your database has been initialized with a new table and two entries containing a username, email and password.');
+    console.log('Your database has been initialized with a new table and two entries containing a username, email, score and password.');
 } else {
 // Since the database already exists, echo that to the console.
     console.log('Database exists.')
