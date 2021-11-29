@@ -13,11 +13,24 @@
         <input id="user" name="user" value="" required>
         <label for="pass">Password: </label>
         <input type="password" id="pass" name="pass" value="" required>
-        <input type="submit" value="Log In" id="login" onclick=>
-
+        <button type="button" onclick="getInfo()">View My Info!</button>
     </form>
+
+
+<script>
+function getInfo() {
+  const getRequest = new XMLHttpRequest();
+  getRequest.onload = function() {
+    document.getElementById("login").innerHTML = this.responseText;
+  }
+  getRequest.open("GET", "http://localhost:5000/app/user/?user=adreiko/");
+  getRequest.send();
+}
+</script>
+
     <p>
         The fun awaits <a href="./modifyAccount.html">here</a>
+        Do you want to go back to the home page? <a href="./index.html">Yes!</a>
     </p>
 </body>
 

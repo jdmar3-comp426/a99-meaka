@@ -34,7 +34,7 @@ app.post("/app/new/user", (req, res) => {
 		pass: req.body.pass ? md5(req.body.pass): null,
 		email: req.body.email
 	}
-	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email, score) VALUES (?, ?, ?, 0)")
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email) VALUES (?, ?, ?)")
 	const info = stmt.run(data.user, data.pass, data.email);
 	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
 });
@@ -46,8 +46,8 @@ app.get("/app/users/", (req, res) => {
 });
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:id
-app.get("/app/user/:id", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE id = ?").get(req.params.id);
+app.get("/app/user/:user", (req, res) => {	
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ?").get(req.bpdy.user);
 	res.status(200).json(stmt);
 });
 
@@ -71,7 +71,7 @@ app.delete("/app/delete/user/:user", (req, res) => {
 	res.status(200).json({"message":stmt.changes +" record deleted: ID " + req.body.user + " (200)"});
 });
 
-// Log In (HTTP method GET) at endpoint /app/user/login
+// Log in (HTTP method GET) at endpoint /app/user/login
 app.get("/app/user/login", (req, res) => {	
 	var data = {
 		user: req.body.user,
@@ -79,8 +79,9 @@ app.get("/app/user/login", (req, res) => {
 	}
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
 	const info = stmt.get(data.user, data.pass);
-	res.status(200).json(stmt);
+	res.status(200).json(info);
 });
+
 
 // Default response for any other request
 app.use(function(req, res){
