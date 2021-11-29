@@ -34,7 +34,7 @@ app.post("/app/new/user", (req, res) => {
 		pass: req.body.pass ? md5(req.body.pass): null,
 		email: req.body.email
 	}
-	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email) VALUES (?, ?, ?)")
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email, score) VALUES (?, ?, ?, 0)")
 	const info = stmt.run(data.user, data.pass, data.email);
 	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
 });
@@ -52,23 +52,34 @@ app.get("/app/user/:id", (req, res) => {
 });
 
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
-//return location along with message 
-app.patch("/app/update/user/:id", (req, res) => {	
+//might also need to add an update score portion
+app.patch("/app/update/user/:user", (req, res) => {	
 	var data = {
 		user: req.body.user,
 		pass: req.body.pass ? md5(req.body.pass): null,
 		email: req.body.email
 	}
-	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass), email = COALESCE(?,email) WHERE id = ?");
-	const info = stmt.run(data.user, data.pass, data.email, req.params.id);
-	res.status(200).json({"message":info.changes +" record updated: ID " + req.params.id + " (200)"});
+	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass), email = COALESCE(?,email) WHERE user = ?");
+	const info = stmt.run(data.user, data.pass, data.email, data.user);
+	res.status(200).json({"message":info.changes +" record updated: ID " + data.user + " (200)"});
 });
 
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:email
 //return changes in message
-app.delete("/app/delete/user/:id", (req, res) => {	
-	const stmt = db.prepare("DELETE FROM userinfo WHERE email = ?").run(req.params.id);
-	res.status(200).json({"message":stmt.changes +" record deleted: ID " + req.params.id + " (200)"});
+app.delete("/app/delete/user/:user", (req, res) => {	
+	const stmt = db.prepare("DELETE FROM userinfo WHERE email = ?").run(req.body.user);
+	res.status(200).json({"message":stmt.changes +" record deleted: ID " + req.body.user + " (200)"});
+});
+
+// Log In (HTTP method GET) at endpoint /app/user/login
+app.get("/app/user/login", (req, res) => {	
+	var data = {
+		user: req.body.user,
+		pass: req.body.pass ? md5(req.body.pass): null,
+	}
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ? AND pass = ?")
+	const info = stmt.get(data.user, data.pass);
+	res.status(200).json(stmt);
 });
 
 // Default response for any other request
