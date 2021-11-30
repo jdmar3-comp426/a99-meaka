@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Log In To An Account!</title>
+    <script>
+    window.addEventListener("load", function(){
+        function sendData() {
+            const sendRequest = new XMLHttpRequest();
+            const signupInfo = new URLSearchParams(new FormData(form));
+            sendRequest.addEventListener("error", function (event){
+                alert('Log In unsuccessful! Please try again.');
+            });
+            sendRequest.addEventListener("load", function (event) {
+                alert('You are logged in!!!');
+            });
+            sendRequest.open("POST", "http://localhost:5000/app/new/interaction" );
+            sendRequest.send( signupInfo );
+        }
+        const form = document.getElementById("login");
+        form.addEventListener("submit", function ( event ){
+            event.preventDefault();
+            sendData();
+        });
+    });
+    </script>
+</head>
+<body>
+    <p>
+        Please log in to your account!
+        <form id="login"> 
+            <label for="user">Username: </label>
+            <input id="user" name="user" value="" required>
+            <label for="pass">Password: </label>
+            <input type="password" id="pass" name="pass" value="" required>
+            <label for="date"> Todays Date: </label>
+            <input id="date" name="date" value="" required>
+            <input type="submit" value="Submit">
+        </form>
+    </p>
+    <p>
+        Thank you for creating an account! The fun awaits!! <a href="./index.html">here</a>
+    </p>
+</body>
+</html>
