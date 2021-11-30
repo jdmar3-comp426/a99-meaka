@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Delete an existing account :( </title>
     <script>
+        //script to delete account from user database permanently
+        //will run once the delete button is hit
       function goodbyeForever() {
         const getRequest = new XMLHttpRequest();
         getRequest.onload = function() {
@@ -17,7 +19,8 @@
 </head>
 <body>
     <p>
-        Please enter your login credentials.
+        <!-- form to get some credentials so we can find account and delete it-->
+        Please enter your credentials.
         <form id="delete"> 
             <label for="user">Username: </label>
             <input id="user" name="user" value="" required>

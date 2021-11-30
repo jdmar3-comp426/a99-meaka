@@ -8,8 +8,12 @@
 <body>
     <h1> I want to... </h1>
     <dl>
+      <!-- list of database interactions we offer -->
+      <!-- posts to currentuser database, need to work on validating to see if its already in database -->
         <li><a href="./login.html">Log in to an existing account.</a></li>
+        <!-- posts to user database-->
         <li><a href="./createAccount.html">Create a new account with my score.</a></li>
+        <!-- deletes from user database-->
         <li><a href="./deleteAccount.html">Delete an existing account</a></li>
     </ol>
     </dl>
@@ -17,8 +21,10 @@
         <img src = "https://www.pngitem.com/pimgs/m/433-4338244_transparent-bear-clipart-cute-polar-bear-clipart-hd.png" alt = "PolarBear" class="center" >
     </marquee>
     <footer>
+      <!-- deletes from current user database-->
       <button id = "logOut" type="button" onclick="goodbyeUser()"> Log Out:( </button>
       <script>
+        //script that will run on logout (same delete scrtipt from delete account but just with dif databse)
       function goodbyeUser() {
         const getRequest = new XMLHttpRequest();
         getRequest.onload = function() {
@@ -28,6 +34,7 @@
         getRequest.send();
       }
       </script>
+      <!-- way to view current users info, msut have logged in first, returns most recent entry in currentuser database (always will be 2 becuase in theory there will only ever be one person logged in at a time)-->
       <button id = "view" type="button" onclick="getInfo()">View My Info!</button>
       <p id="getResult">
       </p>

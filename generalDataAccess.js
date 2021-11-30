@@ -1,3 +1,4 @@
+// create account form - psots to user info
 window.addEventListener("load", function(){
     function sendData() {
         const sendRequest = new XMLHttpRequest();

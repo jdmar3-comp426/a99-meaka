@@ -1,6 +1,9 @@
+//all database interactions
 var express = require("express")
 var app = express()
+//user database
 var db = require('./database.js')
+//interaction database
 var dbi = require('./interactionDatabase.js')
 var md5 = require("md5")
 var cors = require("cors");
