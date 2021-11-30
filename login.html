@@ -26,8 +26,9 @@
     });
     </script>
 </head>
-<body>
-    <p>
+<body id = "login-body">
+    <h1> Log into your account here! </h1>
+    <!-- <p>
         Please log in to your account!
         <form id="login"> 
             <label for="user">Username: </label>
@@ -38,9 +39,27 @@
             <input id="date" name="date" value="" required>
             <input type="submit" value="Submit">
         </form>
+    </p> -->
+    <form id = "login-form">
+        <div id = "login"></div>
+        <div class = "formgroup" id="username-form">
+            <label for="username">Your username*</label>
+            <input type="text" id="username"
+            name="username" />
+        </div>
+
+        <div class = "formgroup" id="password-form">
+            <label for="password">Your password*</label>
+            <input type="text" id="username"
+            name="username" />
+        </div>
+        <input type="submit" value="Submit"/>
+    </form>
+    <p>
+        Thank you for logging into your account! 
     </p>
     <p>
-        Thank you for creating an account! The fun awaits!! <a href="./index.html">here</a>
+        The fun awaits <a href="./index.html">here!!</a>
     </p>
 </body>
 </html>
