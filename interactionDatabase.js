@@ -4,26 +4,22 @@
 const Database = require('better-sqlite3');
 
 // Connect to a database or create one if it doesn't exist yet.
-const dbi = new Database('currentUserInteraction.db');
+const dbi = new Database('currentuser.db');
 
 // Is the database initialized or do we need to initialize it?
-const stmt = dbi.prepare(`SELECT name FROM sqlite_master WHERE type='table' and name='currentUser';`);
+const stmt = dbi.prepare(`SELECT name FROM sqlite_master WHERE type='table' and name='currentuser';`);
 let row = stmt.get();
 if (row === undefined) {
-// Echo information about what you are doing to the console.
-    console.log('Your database appears to be empty. I will initialize it now.');
+    console.log('Your database appears to be empty. I will initialize it now');
 // Set a const that will contain your SQL commands to initialize the database.
-    const sqlInit = `
-        CREATE TABLE userinfo ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT, date TEXT);
-		INSERT INTO userinfo (user, pass, time) VALUES ('admin','bdc87b9c894da5168059e00ebffb9077', '11/30'), ('test','9241818c20435c6672dac2c4b6e6c071', '12/30')
-    `;
+const sqlInit = `
+    CREATE TABLE currentuser ( id INTEGER PRIMARY KEY, user TEXT, pass TEXT);
+    INSERT INTO currentuser (user, pass) VALUES ('admin','bdc87b9c894da5168059e00ebffb9077')`;
 // Execute SQL commands that we just wrote above.
     dbi.exec(sqlInit);
-// Echo information about what we just did to the console.
-    console.log('Your database has been initialized with a new table and two entries containing a username, email, and time of login.');
+    console.log('Your database has been initialized with a new table and two entries containing a username, and email');
 } else {
-// Since the database already exists, echo that to the console.
-    console.log('Database exists.')
+    console.log('current user Database exists.')
 }
 // Export all of the above as a module so that we can use it elsewhere.
 module.exports = dbi
