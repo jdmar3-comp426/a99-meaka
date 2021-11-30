@@ -12,5 +12,30 @@
         <li><a href="./createAccount.html">Create a new account with my score.</a></li>
         <li><a href="./deleteAccount.html">Delete an existing account</a></li>
     </ol>
+<footer>
+    <button id = "logOut" type="button" onclick="goodbyeUser()">Log Out:(</button>
+    <script>
+    function goodbyeUser() {
+      const getRequest = new XMLHttpRequest();
+      getRequest.onload = function() {
+        document.getElementById("logOut").innerHTML = this.responseText;
+        alert('You have been logged out - see you next time!')
+      }
+      getRequest.open("DELETE", "http://localhost:5000/app/interaction/1/");
+      getRequest.send();
+    }
+    </script>
+    <button id = "view" type="button" onclick="getInfo()">View My Info!</button>
+    <script>
+        function getInfo() {
+          const getRequest = new XMLHttpRequest();
+          getRequest.onload = function() {
+            document.getElementById("login").innerHTML = this.responseText;
+          }
+          getRequest.open("GET", "http://localhost:5000/app/interaction/1/");
+          getRequest.send();
+        }
+        </script>
+</footer>
 </body>
 </html>
