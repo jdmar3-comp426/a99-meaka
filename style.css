@@ -32,5 +32,20 @@ li {
       width: 40%;
   }
 
+    #create-body {
+        text-align: center;
+        background-color: rgb(93, 93, 184);
+        background-image: url('https://acegif.com/wp-content/gif/snwflks-96.gif');
+    }
+
+    #create-form { 
+        text-align: center;
+        align-content: center;
+        border-style: solid solid solid solid;
+        border-color: rgb(155, 24, 24);
+        width: 40%;
+    }
+
+
 
 

@@ -6,21 +6,35 @@
     <title>Create An Account!</title>
     <script src="generalDataAccess.js"></script>
 </head>
-<body>
+<body id= "create-body">
+    <h1> Create your account here! </h1>
+    <form id = "create-form">
+        <div id = "create"></div>
+        <div class = "formgroup" id="username-form">
+            <label for="username">Your username*</label>
+            <input type="text" id="username"
+            name="username" />
+        </div>
+
+        <div class = "formgroup" id="password-form">
+            <label for="password">Your password*</label>
+            <input type="text" id="password"
+            name="username" />
+        </div>
+
+        <div class = "formgroup" id="email-form">
+            <label for="email">Your email*</label>
+            <input type="text" id="email"
+            name="username" />
+        </div>
+
+        <input type="submit" value="Submit"/>
+    </form>
     <p>
-        Please sign up for an account with us!
-        <form id="signup"> 
-            <label for="user">Username: </label>
-            <input id="user" name="user" value="" required>
-            <label for="email">Email: </label>
-            <input id="email" name="email" value="" required>
-            <label for="pass">Password: </label>
-            <input type="password" id="pass" name="pass" value="" required>
-            <input type="submit" value="Submit">
-        </form>
+        Thank you for creating your account! 
     </p>
     <p>
-        Thank you for creating an account! The fun awaits!! <a href="./index.html">here</a>
+        The fun awaits <a href="./index.html">here!!</a>
     </p>
 </body>
 </html>
