@@ -3,18 +3,11 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Log In!</title>
-    <script src="generalDataAccess.js"></script>
+    <title>Profile!</title>
 </head>
 
 <body>
-    <form id="login">
-        <label for="user">Username: </label>
-        <input id="user" name="user" value="" required>
-        <label for="pass">Password: </label>
-        <input type="password" id="pass" name="pass" value="" required>
-        <button type="button" onclick="getInfo()">View My Info!</button>
-    </form>
+    <button id = "view" type="button" onclick="getInfo()">View My Info!</button>
 
 
 <script>
@@ -23,7 +16,7 @@ function getInfo() {
   getRequest.onload = function() {
     document.getElementById("login").innerHTML = this.responseText;
   }
-  getRequest.open("GET", "http://localhost:5000/app/user/1/");
+  getRequest.open("GET", "http://localhost:5000/app/interaction/1/");
   getRequest.send();
 }
 </script>
