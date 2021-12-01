@@ -8,7 +8,11 @@ If this is your first time visitin gour site, make an account by clicking "Creat
 
 Once you create an account you can start playing!
 
-A color will appear in the middle of the screen and there will be an option to type in your guess for the RGB value. Once you are satisfied with your guess, you can click submit. You can guess multiple times until you correctly select the color! The number of guesses it takes you to guess the correct value is your score, and it will be recorded on the leaderboard in the right hand side of the screen. You can compare your score to the top scorers on our site!
+A color will appear as the background of the screen and there will be an option to type in your guess for the RGB value. As you enter values for the Red, Green, and Blue components, the inside rectangle where the inputs are will change accordingly. Once you are satisfied with your guess and the inside square blends perfectly into the background, you can click "Check your answer!".
+
+If your answer is incorrect, notifications will appear below each input box with hints about whether the true value is higher or lower. If your guess for the field is correct, you will see a message that says "You guessed red/blue/green correctly!"
+
+You can guess multiple times until you correctly select the color! The number of guesses it takes you to guess the correct value is your score, and it will be recorded on the leaderboard in the right hand side of the screen. You can compare your score to the top scorers on our site!
 
 ## Team Roles
 
