@@ -32,9 +32,9 @@ app.post("/app/new/user", (req, res) => {
 	var data = {
 		user: req.body.user,
 		pass: req.body.pass ? md5(req.body.pass): null,
-		email: req.body.email
+		email: req.body.email,
 	}
-	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email) VALUES (?, ?, ?)")
+	const stmt = db.prepare("INSERT INTO userinfo (user, pass, email, logged) VALUES (?, ?, ?, 0)")
 	const info = stmt.run(data.user, data.pass, data.email);
 	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
 });
@@ -53,18 +53,31 @@ app.get("/app/user/:user", (req, res) => {
 	res.status(200).json(stmt);
 });
 
+// READ a single user (HTTP method GET) at endpoint /app/user/:user
+app.get("/app/user/:logged", (req, res) => {	
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE logged = 1").get();
+	res.status(200).json(stmt);
+});
+
 
 // UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
 //might also need to add an update score portion
-app.patch("/app/update/user/:id", (req, res) => {	
+app.patch("/app/update/user/:logged", (req, res) => {	
 	var data = {
 		user: req.body.user,
 		pass: req.body.pass ? md5(req.body.pass): null,
 		email: req.body.email
 	}
-	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass), email = COALESCE(?,email) WHERE id = ?");
-	const info = stmt.run(data.user, data.pass, data.email, req.params.id);
+	const stmt = db.prepare("UPDATE userinfo SET user = COALESCE(?,user), pass = COALESCE(?,pass), email = COALESCE(?,email) WHERE logged = ?");
+	const info = stmt.run(data.user, data.pass, data.email, req.params.logged);
 	res.status(200).json({"message":info.changes +" record updated: ID " + data.user + " (200)"});
+});
+// UPDATE a single user to be logged in (HTTP method PATCH) at endpoint /app/update/user/:user/password/:password
+//might also need to add an update score portion
+app.patch("/app/update/user/:user/logged/:logged", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET logged = COALESCE(?, logged) WHERE user = ?");
+	const info = stmt.run(req.params.logged, req.params.user);
+	res.status(200).json({"message":info.changes +" record updated: ID " + req.params.user + " (200)"});
 });
 
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:email
