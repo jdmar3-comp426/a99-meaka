@@ -60,7 +60,7 @@ app.get("/app/user/:logged", (req, res) => {
 });
 
 
-// UPDATE a single user (HTTP method PATCH) at endpoint /app/update/user/:id
+// UPDATE a single user (user that is logged in) (HTTP method PATCH) at endpoint app/update/user/:logged
 //might also need to add an update score portion
 app.patch("/app/update/user/:logged", (req, res) => {	
 	var data = {
@@ -80,10 +80,10 @@ app.patch("/app/update/user/:user/logged/:logged", (req, res) => {
 	res.status(200).json({"message":info.changes +" record updated: ID " + req.params.user + " (200)"});
 });
 
-// DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:email
+// DELETE a single user (logged in user) (HTTP method DELETE) at endpoint /app/delete/logged/:logged
 //return changes in message
-app.delete("/app/delete/user/:id", (req, res) => {	
-	const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?").run(req.params.id);
+app.delete("/app/delete/logged/:logged", (req, res) => {	
+	const stmt = db.prepare("DELETE FROM userinfo WHERE logged = ?").run(req.params.logged);
 	res.status(200).json({"message":stmt.changes +" record deleted: ID " + req.body.user + " (200)"});
 });
 //Define interaction endpoints
