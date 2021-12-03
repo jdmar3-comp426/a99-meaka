@@ -5,50 +5,57 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Update your Profile!</title>
     <script>
-        // post to currentuser database to log the current users score
-        login-form.addEventListener("submit", function(){
-        function patchData() {
-            const sendRequest = new XMLHttpRequest();
-            const signupInfo = new URLSearchParams(new FormData(form));
-            sendRequest.addEventListener("error", function (event){
-                alert('Update unsuccessful! Please try again.');
-            });
-            sendRequest.addEventListener("load", function (event) {
-                alert('You have updated your profile!');
-            });
-            
-            sendRequest.open("PATCH", "/app/update/user/1" );
-            sendRequest.send( signupInfo );
-        }
-        const form = document.getElementById("login");
-        form.addEventListener("update", function (event ){
-            event.preventDefault();
-            patchData();
+        // create account form - psots to user info
+        window.addEventListener("load", function(){
+     function updateData() {
+        const sendRequest = new XMLHttpRequest();
+        const signupInfo = new URLSearchParams(new FormData(form));
+        sendRequest.addEventListener("error", function (event){
+            alert('Update unsuccessful! Please try again.');
         });
+        sendRequest.addEventListener("load", function (event) {
+            alert('Your account was updated');
+        });
+        sendRequest.open("PATCH", "http://localhost:5000/app/update/user/1" );
+        sendRequest.send( signupInfo );
+    }
+    const form = document.getElementById("update-form");
+    form.addEventListener("submit", function ( event ){
+        event.preventDefault();
+        updateData();
     });
-    </script>
+});
+</script>
 </head>
+<!-- need to show peoples profile information-->
 <body id = "login-body">
     <h1> Update Your Profile! </h1>
-    <form id = "login-form">
+    <form id = "update-form">
         <div id = "login"></div>
         <div class = "formgroup" id="username-form">
-            <label for="username">Your username*</label>
-            <input type="text" id="username"
-            name="username" />
+            <label for="user">Your username*</label>
+            <input type="text" id="user"
+            name="user" />
         </div>
 
         <div class = "formgroup" id="password-form">
-            <label for="password">Your password*</label>
-            <input type="password" id="password"
+            <label for="pass">Your password*</label>
+            <input type="password" id="pass"
             name="pass" />
         </div>
+        <div class = "formgroup" id="email-form">
+            <label for="email">Your email*</label>
+            <input type="text" id="email"
+            name="email" />
+        </div>
         <input type="submit" value="Update"/>
-        <input type="submit" value="Delete"/>
     </form>
 
     <p>
         The fun awaits <a href="./src/index.html">here!!</a>
+    </p>
+    <p>
+        I want to return to the <a href='./index.html'> home page</a>
     </p>
 </body>
 </html>

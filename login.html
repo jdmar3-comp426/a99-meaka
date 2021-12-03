@@ -16,7 +16,7 @@
             sendRequest.addEventListener("load", function (event) {
                 alert('You are logged in!!!');
             });
-            sendRequest.open("POST", "http://localhost:5000/app/new/interaction" );
+            sendRequest.open("PATCH", "http://localhost:5000/app/update/user/logged/1" );
             sendRequest.send( signupInfo );
         }
         const form = document.getElementById("login-form");

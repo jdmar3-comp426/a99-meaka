@@ -10,9 +10,9 @@
       function goodbyeForever() {
         const getRequest = new XMLHttpRequest();
         getRequest.onload = function() {
-          alert('You have been logged out - see you next time!')
+          alert('Your account has been deleted!')
         }
-        getRequest.open("DELETE", "http://localhost:5000/app/delete/interaction/2/");
+        getRequest.open("DELETE", "http://localhost:5000/app/delete/logged/1");
         getRequest.send();
       }
     </script>
@@ -22,10 +22,6 @@
         <!-- form to get some credentials so we can find account and delete it-->
         Please enter your credentials.
         <form id="delete"> 
-            <label for="user">Username: </label>
-            <input id="user" name="user" value="" required>
-            <label for="pass">Password: </label>
-            <input type="password" id="pass" name="pass" value="" required>
             <label> Are you sure you want to delete your account?</label>
             <input type="checkbox" id="table" name="table" required>
             <input type="submit" value="Delete Account" onclick="goodbyeForever()">

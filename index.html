@@ -21,33 +21,31 @@
         <img src = "https://www.pngitem.com/pimgs/m/433-4338244_transparent-bear-clipart-cute-polar-bear-clipart-hd.png" alt = "PolarBear" class="center" >
     </marquee>
     <footer>
-      <!-- deletes from current user database-->
+      <!-- change logged to 0 -->
       <button id = "logOut" type="button" onclick="goodbyeUser()"> Log Out:( </button>
       <script>
-        //script that will run on logout (same delete scrtipt from delete account but just with dif databse)
+        //script that will run on logout
       function goodbyeUser() {
         const getRequest = new XMLHttpRequest();
         getRequest.onload = function() {
           alert('You have been logged out - see you next time!')
         }
-        getRequest.open("DELETE", "http://localhost:5000/app/delete/interaction/2/");
+        getRequest.open("PATCH", "http://localhost:5000/app/update/user/logoff/1");
         getRequest.send();
       }
       </script>
-      <!-- way to view current users info, msut have logged in first, returns most recent entry in currentuser database (always will be 2 becuase in theory there will only ever be one person logged in at a time)-->
-      <button id = "view" type="button" onclick="getInfo()">View My Info!</button>
-      <p id="getResult">
-      </p>
+      <!-- get this to link to profile page -->
+      <a id = "view" href='./profile.html'>View My Info!</a>
       <script>
-          function getInfo() {
-            const getRequest = new XMLHttpRequest();
-            getRequest.onload = function() {
-              document.getElementById("getResult").innerHTML = this.responseText;
-            }
-            getRequest.open("GET", "http://localhost:5000/app/interaction/2/");
-            getRequest.send();
-          }
-          </script>
+      {
+        const getRequest = new XMLHttpRequest();
+        getRequest.onload = function() {
+          alert('You have been logged out - see you next time!')
+        }
+        getRequest.open("PATCH", "http://localhost:5000/app/update/user/logoff/1");
+        getRequest.send();
+      }
+      </script>
   </footer>
 </body>
 </html>
