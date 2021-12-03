@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Meaka Final Project</title>
+</head>
+<body onload="viewUsers()">
+    <h1> Leaderboard </h1>
+    <div><p id="leaderboard"></p>
+</div>
+    
+    <script>
+    var scores=null
+    function viewLead() {
+        const getRequest = new XMLHttpRequest();
+        getRequest.onload = function() {
+        //global var 
+        scores = JSON.parse(this.responseText);
+        }
+        getRequest.open("GET", "http://localhost:5000/app/interactions");
+        getRequest.send();
+    }
+    function viewUsers() {
+        viewLead()
+        document.getElementById('leaderboard').innerHTML = scores;
+    }
+    </script>
+</body>
+</html>
