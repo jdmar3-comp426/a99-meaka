@@ -15,6 +15,8 @@
         <li><a href="./createAccount.html">Create a new account with my score.</a></li>
         <!-- deletes from user database-->
         <li><a href="./deleteAccount.html">Delete an existing account</a></li>
+        <!-- updates current user database-->
+        <li><a href="./profile.html">Update an Existing Account</a></li>
     </ol>
     </dl>
     <marquee behavior = "scroll" direction = "right">
@@ -34,15 +36,17 @@
         getRequest.send();
       }
       </script>
-      <!-- get this to link to profile page -->
-      <a id = "view" href='./profile.html'>View My Info!</a>
+      <button id = "view" type="button" onclick="viewUser()"> View my Info! </button>
+      <p id = "getResult"></p>
       <script>
-      {
+        //script runnign on view my info button
+      function viewUser() {
         const getRequest = new XMLHttpRequest();
         getRequest.onload = function() {
-          alert('You have been logged out - see you next time!')
+          alert('I have retrieved your information!')
+        document.getElementById("getResult").innerHTML = this.responseText;
         }
-        getRequest.open("PATCH", "http://localhost:5000/app/update/user/logoff/1");
+        getRequest.open("GET", "http://localhost:5000/app/user/1");
         getRequest.send();
       }
       </script>
