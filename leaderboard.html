@@ -3,28 +3,26 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Meaka Final Project</title>
+    <title>Leaderboard</title>
+    <script>
+        document.addEventListener('readystatechange', event => { 
+        if (event.target.readyState === "complete") {
+            viewUsers();
+        }
+        });
+    function viewUsers() {
+    const getRequest = new XMLHttpRequest();
+    getRequest.onload = function() { 
+   document.getElementById("leaderboard").textContent = this.responseText;
+    }
+    getRequest.open("GET", "http://localhost:5000/app/interactions");
+    getRequest.send();
+    }
+    </script>
 </head>
 <body onload="viewUsers()">
     <h1> Leaderboard </h1>
-    <div><p id="leaderboard"></p>
-</div>
+    <pre id="leaderboard"></pre>
     
-    <script>
-    var scores=null
-    function viewLead() {
-        const getRequest = new XMLHttpRequest();
-        getRequest.onload = function() {
-        //global var 
-        scores = JSON.parse(this.responseText);
-        }
-        getRequest.open("GET", "http://localhost:5000/app/interactions");
-        getRequest.send();
-    }
-    function viewUsers() {
-        viewLead()
-        document.getElementById('leaderboard').innerHTML = scores;
-    }
-    </script>
 </body>
 </html>
