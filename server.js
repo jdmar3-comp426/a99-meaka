@@ -3,6 +3,7 @@ var express = require("express")
 var app = express()
 //user database
 var db = require('./database.js')
+var dbi = require('./interactiondb.js')
 //interaction database
 var md5 = require("md5")
 var cors = require("cors");
@@ -92,6 +93,15 @@ app.delete("/app/delete/logged/:logged", (req, res) => {
 	const stmt = db.prepare("DELETE FROM userinfo WHERE logged = ?").run(req.params.logged);
 	res.status(200).json({"message":stmt.changes +" record deleted: ID " + req.body.user + " (200)"});
 });
+
+//<--------------------------------------------------------------------------------------------------->
+// CREATE a new score recording (HTTP method POST) at endpoint /app/new/interaction/logged/:logged with a score of 0
+app.post("/app/new/interaction/logged/:logged", (req, res) => {	
+	const stmt = db.prepare("INSERT INTO userinfo (user, score) VALUES (?, ?) ORDER BY score")
+	const info = stmt.run(req.body.user, req.body.score);
+	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
+});
+
 
 // Default response for any other request
 app.use(function(req, res){
