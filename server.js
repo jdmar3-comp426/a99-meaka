@@ -97,10 +97,15 @@ app.delete("/app/delete/logged/:logged", (req, res) => {
 
 //<--------------------------------------------------------------------------------------------------->
 // CREATE a new score recording (HTTP method POST) at endpoint /app/new/interaction/logged/:logged with a score of 0
-app.post("/app/new/interaction/logged/:logged", (req, res) => {	
-	const stmt = db.prepare("INSERT INTO userinfo (user, score) VALUES (?, ?) ORDER BY score")
+app.post("/app/new/interaction", (req, res) => {	
+	const stmt = dbi.prepare("INSERT INTO scores (user, score) VALUES (?, ?) ORDER BY score")
 	const info = stmt.run(req.body.user, req.body.score);
 	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
+});
+// READ a list of all users (HTTP method GET) at endpoint /app/users/
+app.get("/app/interactions/", (req, res) => {	
+	const stmt = dbi.prepare("SELECT * FROM scores").all();
+	res.status(200).json(stmt);
 });
 
 

@@ -7,6 +7,7 @@ function getRandomIntInclusive(min, max) {
 var red_color = getRandomIntInclusive(0, 255); //color values to guess, color should be displayed on screen
 var green_color = getRandomIntInclusive(0, 255);
 var blue_color = getRandomIntInclusive(0, 255);
+var currentUser = null;
 
 var back_color = 'rgb(' + red_color + ',' + green_color + ',' + blue_color + ')';
 document.body.style.backgroundColor = back_color;
@@ -104,6 +105,12 @@ function _game() {
         } else {
             winner = "Congratulations! You guessed the color correctly in " + guess_counter + " guesses!";
         }
+        //get 
+        viewUser();
+        //user name of current user playing
+        var username = currentUser['user'];
+        //patch
+        updateUser(username, guess_counter);
     }
 
     document.getElementById('winner').innerHTML = winner;
@@ -129,3 +136,28 @@ document.getElementById('green')
 // function is called
 document.getElementById('blue')
     .addEventListener('input', myColour);
+
+//get user from userinfo based on logged in 
+function viewUser() {
+    const getRequest = new XMLHttpRequest();
+    getRequest.onload = function() {
+    //global var 
+    currentUser = this.responseText;
+    }
+    getRequest.open("GET", "http://localhost:5000/app/user/1");
+    getRequest.send();
+}
+
+//patch function to put in the new score
+function updateUser(user, score) {
+    const sendRequest = new XMLHttpRequest();
+    //const signupInfo = new URLSearchParams(new FormData(form));
+    sendRequest.addEventListener("error", function (event){
+        alert('Update unsuccessful! Please try again.');
+    });
+    sendRequest.addEventListener("load", function (event) {
+        alert('Your account was updated');
+    });
+    sendRequest.open("POST", "/app/new/interaction");
+    sendRequest.send("user="+user+"&score="+score );
+}
