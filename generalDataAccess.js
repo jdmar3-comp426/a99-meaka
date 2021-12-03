@@ -12,7 +12,7 @@ window.addEventListener("load", function(){
         sendRequest.open("POST", "http://localhost:5000/app/new/user" );
         sendRequest.send( signupInfo );
     }
-    const form = document.getElementById("signup");
+    const form = document.getElementById("create-form");
     form.addEventListener("submit", function ( event ){
         event.preventDefault();
         sendData();

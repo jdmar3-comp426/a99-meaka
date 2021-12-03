@@ -19,7 +19,7 @@
             sendRequest.open("POST", "http://localhost:5000/app/new/interaction" );
             sendRequest.send( signupInfo );
         }
-        const form = document.getElementById("login");
+        const form = document.getElementById("login-form");
         form.addEventListener("submit", function ( event ){
             event.preventDefault();
             sendData();
@@ -32,15 +32,15 @@
     <form id = "login-form">
         <div id = "login"></div>
         <div class = "formgroup" id="username-form">
-            <label for="username">Your username*</label>
-            <input type="text" id="username"
-            name="username" />
+            <label for="user">Your username*</label>
+            <input type="text" id="user"
+            name="user" />
         </div>
 
         <div class = "formgroup" id="password-form">
-            <label for="password">Your password*</label>
-            <input type="password" id="password"
-            name="username" />
+            <label for="pass">Your password*</label>
+            <input type="password" id="pass"
+            name="pass" />
         </div>
         <input type="submit" value="Submit"/>
     </form>
@@ -49,6 +49,9 @@
     </p>
     <p>
         The fun awaits <a href="./src/index.html">here!!</a>
+    </p>
+    <p>
+        I want to return to the <a href='./index.html'> home page</a>
     </p>
 </body>
 </html>
