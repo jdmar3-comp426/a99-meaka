@@ -98,7 +98,7 @@ app.delete("/app/delete/logged/:logged", (req, res) => {
 //<--------------------------------------------------------------------------------------------------->
 // CREATE a new score recording (HTTP method POST) at endpoint /app/new/interaction/logged/:logged with a score of 0
 app.post("/app/new/interaction", (req, res) => {	
-	const stmt = dbi.prepare("INSERT INTO scores (user, score) VALUES (?, ?) ORDER BY score")
+	const stmt = dbi.prepare("INSERT INTO scores (user, score) VALUES (?, ?)")
 	const info = stmt.run(req.body.user, req.body.score);
 	res.status(201).json({"message":info.changes +" record created: ID " + info.lastInsertRowid + " (201)"});
 });

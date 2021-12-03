@@ -100,17 +100,19 @@ function _game() {
 
     var winner = "Keep Guessing!";
     if (red_correct & green_correct & blue_correct) {
+        //get 
+        viewUser();
+        //user name of current user playing
+        var username = JSON.parse(currentUser).user;
+        //patch
+        updateUser(username, guess_counter);
+
         if (guess_counter == 1) {
             winner = "Congratulations! You guessed the color correctly in " + guess_counter + " guess!";
         } else {
             winner = "Congratulations! You guessed the color correctly in " + guess_counter + " guesses!";
         }
-        //get 
-        viewUser();
-        //user name of current user playing
-        var username = currentUser['user'];
-        //patch
-        updateUser(username, guess_counter);
+
     }
 
     document.getElementById('winner').innerHTML = winner;
@@ -152,12 +154,14 @@ function viewUser() {
 function updateUser(user, score) {
     const sendRequest = new XMLHttpRequest();
     //const signupInfo = new URLSearchParams(new FormData(form));
+    const storedinfo = new URLSearchParams({user: user, score: score})
+
     sendRequest.addEventListener("error", function (event){
         alert('Update unsuccessful! Please try again.');
     });
     sendRequest.addEventListener("load", function (event) {
         alert('Your account was updated');
     });
-    sendRequest.open("POST", "/app/new/interaction");
-    sendRequest.send("user="+user+"&score="+score );
+    sendRequest.open("POST", "http://localhost:5000/app/new/interaction");
+    sendRequest.send(storedinfo);
 }
