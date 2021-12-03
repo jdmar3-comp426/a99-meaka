@@ -46,14 +46,15 @@ app.get("/app/users/", (req, res) => {
 
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:user
-app.get("/app/user/:user", (req, res) => {	
+/*app.get("/app/user/:user", (req, res) => {	
 	const stmt = db.prepare("SELECT * FROM userinfo WHERE user = ?").get(req.params.user);
 	res.status(200).json(stmt);
 });
+*/
 
 // READ a single user (HTTP method GET) at endpoint /app/user/:user
 app.get("/app/user/:logged", (req, res) => {	
-	const stmt = db.prepare("SELECT * FROM userinfo WHERE logged = 1").get();
+	const stmt = db.prepare("SELECT * FROM userinfo WHERE logged = ?").get(req.params.logged);
 	res.status(200).json(stmt);
 });
 
