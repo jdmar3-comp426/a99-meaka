@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Update your Profile!</title>
+    <script>
+        // post to currentuser database to log the current users score
+        login-form.addEventListener("submit", function(){
+        function patchData() {
+            const sendRequest = new XMLHttpRequest();
+            const signupInfo = new URLSearchParams(new FormData(form));
+            sendRequest.addEventListener("error", function (event){
+                alert('Update unsuccessful! Please try again.');
+            });
+            sendRequest.addEventListener("load", function (event) {
+                alert('You have updated your profile!');
+            });
+            
+            sendRequest.open("PATCH", "/app/update/user/1" );
+            sendRequest.send( signupInfo );
+        }
+        const form = document.getElementById("login");
+        form.addEventListener("update", function (event ){
+            event.preventDefault();
+            patchData();
+        });
+    });
+    </script>
+</head>
+<body id = "login-body">
+    <h1> Update Your Profile! </h1>
+    <form id = "login-form">
+        <div id = "login"></div>
+        <div class = "formgroup" id="username-form">
+            <label for="username">Your username*</label>
+            <input type="text" id="username"
+            name="username" />
+        </div>
+
+        <div class = "formgroup" id="password-form">
+            <label for="password">Your password*</label>
+            <input type="password" id="password"
+            name="pass" />
+        </div>
+        <input type="submit" value="Update"/>
+        <input type="submit" value="Delete"/>
+    </form>
+
+    <p>
+        The fun awaits <a href="./src/index.html">here!!</a>
+    </p>
+</body>
+</html>

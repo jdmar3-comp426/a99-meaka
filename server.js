@@ -74,10 +74,10 @@ app.patch("/app/update/user/:logged", (req, res) => {
 });
 // UPDATE a single user to be logged in (HTTP method PATCH) at endpoint /app/update/user/:user/password/:password
 //might also need to add an update score portion
-app.patch("/app/update/user/:user/logged/:logged", (req, res) => {	
-	const stmt = db.prepare("UPDATE userinfo SET logged = COALESCE(?, logged) WHERE user = ?");
-	const info = stmt.run(req.params.logged, req.params.user);
-	res.status(200).json({"message":info.changes +" record updated: ID " + req.params.user + " (200)"});
+app.patch("/app/update/user/logged/:logged", (req, res) => {	
+	const stmt = db.prepare("UPDATE userinfo SET logged = COALESCE(?, logged) WHERE user = ? AND pass = ?");
+	const info = stmt.run(req.params.logged, req.body.user, md5(req.body.pass));
+	res.status(200).json({"message":info.changes +" record updated: ID " + req.body.user + " (200)"});
 });
 
 // DELETE a single user (logged in user) (HTTP method DELETE) at endpoint /app/delete/logged/:logged
@@ -88,6 +88,7 @@ app.delete("/app/delete/logged/:logged", (req, res) => {
 });
 //Define interaction endpoints
  
+//----------------------------------------------------------------------------------------------
 // CREATE a new user (HTTP method POST) at endpoint /app/new/interaction
 app.post("/app/new/interaction", (req, res) => {	
 	var data = {
