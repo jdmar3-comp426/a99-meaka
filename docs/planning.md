@@ -13,6 +13,9 @@ Display if RGB values are too high, too low, correct
 Goose buttons
 Keep track of # guesses
 
+## Logistics
+Primary communication occurred over zoom and group messages, Issues were logged in group messages and not github.
+
 ## Things that needed to happen:
 Back-end specifications: Aubry, Emma, Amy, Bean
 API built on whatever framework you choose: Aubry, Emma
