@@ -6,7 +6,7 @@ Test out your color identification skills with our javascript game. Compete agai
 ## Instructions
 To run our game simply open up a terminal and run the command "npm run start" and you are off and running! Have a good time:) 
 
-If this is your first time visitin gour site, make an account by clicking "Create a new account with my score"! If you have visited our site before, select "Log into an existing account." If you would like to delete your account, we are sorry to see you go, but feel free to select "Delete an existing account."
+If this is your first time visitin gour site, make an account by clicking "Create a new account with my score"! Once you create your account go back to the home page to log in and let the fun begin!  If you have visited our site before, select "Log into an existing account." If you would like to delete your account, we are sorry to see you go, but feel free to select "Delete an existing account."
 
 Once you create an account you can start playing!
 
@@ -16,7 +16,13 @@ If your answer is incorrect, notifications will appear below each input box with
 
 You can guess multiple times until you correctly select the color! The number of guesses it takes you to guess the correct value is your score, and it will be recorded on the leaderboard in the right hand side of the screen. You can compare your score to the top scorers on our site!
 
+## Demo Of Our Game By The Ever So Lovely Megan Nickel
+
+https://www.youtube.com/watch?v=eVLbSN4igBk 
+
 ## Team Roles
+
+**Note we all had a part in developing all aspects of the game below are what we each primarily focused on**
 
 Aubry Dreikosen: database & API
 Megan Nickel: website design & logistics
