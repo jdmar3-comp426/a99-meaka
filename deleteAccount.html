@@ -7,21 +7,21 @@
     <script>
         //script to delete account from user database permanently
         //will run once the delete button is hit
-      function goodbyeForever() {
-        const getRequest = new XMLHttpRequest();
-        getRequest.onload = function() {
-          alert('Your account has been deleted!')
+        function goodbyeForever() {
+            const getRequest = new XMLHttpRequest();
+            getRequest.onload = function() {
+                alert('Your account has been deleted!')
+            }
+            getRequest.open("DELETE", "http://localhost:5000/app/delete/logged/1");
+            getRequest.send();
         }
-        getRequest.open("DELETE", "http://localhost:5000/app/delete/logged/1");
-        getRequest.send();
-      }
     </script>
 </head>
+
 <body>
     <p>
         <!-- form to get some credentials so we can find account and delete it-->
-        Please enter your credentials.
-        <form id="delete"> 
+        <form id="delete">
             <label> Are you sure you want to delete your account?</label>
             <input type="checkbox" id="table" name="table" required>
             <input type="submit" value="Delete Account" onclick="goodbyeForever()">
@@ -35,7 +35,8 @@
         I want to return to the <a href='./index.html'> home page</a>
     </p>
     <marquee>
-        <img src = "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2020/01/931/524/polar-bear-waving-swns.jpg?ve=1&tl=1" alt = "PolarBear waving bye" class="center" >
+        <img src="https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2020/01/931/524/polar-bear-waving-swns.jpg?ve=1&tl=1" alt="PolarBear waving bye" class="center">
     </marquee>
 </body>
+
 </html>
