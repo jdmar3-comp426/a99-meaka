@@ -3,9 +3,13 @@
 
 Test out your color identification skills with our javascript game. Compete against other players to try to guess the RGB of randomly generated colors in the least amount of tries and keep track of your progress and success by making an account! See where you stand on our leaderboard and hone your skils. 
 
-## Instructions
+## Set Up
+To install the dependencies necessary for our grame run the command "npm install browser-sync better-sqlite3 express md5 concurrently cors"
+
 To run our game simply open up a terminal and run the command "npm run start" and you are off and running! Have a good time:) 
 
+
+## Instructions
 If this is your first time visitin gour site, make an account by clicking "Create a new account with my score"! Once you create your account go back to the home page to log in and let the fun begin!  If you have visited our site before, select "Log into an existing account." If you would like to delete your account, we are sorry to see you go, but feel free to select "Delete an existing account."
 
 Once you create an account you can start playing!
