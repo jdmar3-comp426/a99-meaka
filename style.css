@@ -1,0 +1,51 @@
+body {
+    background-color: #81c6dd;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(8, 8, 8);
+}
+
+li {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 50px;
+  }
+
+  #login-body {
+      background-image: url('https://i.pinimg.com/originals/2d/a6/fb/2da6fb37da6b2e409b522af06d8a9cd4.gif');
+  }
+
+  #login-form {
+      border-style: solid solid solid solid;
+      border-color: rgb(155, 24, 24);
+      width: 40%;
+  }
+
+    #create-body {
+        text-align: center;
+        background-color: rgb(93, 93, 184);
+        background-image: url('https://acegif.com/wp-content/gif/snwflks-96.gif');
+    }
+
+    #create-form { 
+        text-align: center;
+        align-content: center;
+        border-style: solid solid solid solid;
+        border-color: rgb(155, 24, 24);
+        width: 40%;
+    }
+
+
+
+

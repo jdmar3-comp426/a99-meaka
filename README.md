@@ -1,54 +1,52 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6341280&assignment_repo_type=AssignmentRepo)
-# a99 Finally
+# RGB Color Picker Game-Meaka COMP 426 Final Project
 
-COMP426 final project template repository. All your code and documentation goes here. Change this text to be a brief description of your final project. Put the name in the header above. You will change everything below to be the main technical documentation, as outlined below.
+Test out your color identification skills with our javascript game. Compete against other players to try to guess the RGB of randomly generated colors in the least amount of tries and keep track of your progress and success by making an account! See where you stand on our leaderboard and hone your skils. 
 
-## First steps
+## Set Up
+To install the dependencies necessary for our grame run the command "npm install browser-sync better-sqlite3 express md5 concurrently cors"
 
-Other steps that you will need to take after you have cloned this repository:
+To run our game simply open up a terminal and run the command "npm run start" and you are off and running! Have a good time:) 
 
-1. Choose and update the LICENSE file accordingly. 
-2. Edit this README.md file and use it as the main location of your technical documentation with links out to information contained under `/docs/`.
-3. Create a `/docs/` directory for more elaborate documentation of your API, planning notes, etc.
-4. Make sure that all of your team members have access to the repository as administrators.
-5. Create a project under the **Projects** tab. Use this to manage your planning. Create a To-do list, etc. Explore the tools available and user them to manage your project.
-7. Assign team roles and include a listing of those roles in this README.md file or in another file under `/docs/`.
-8. Then put your entire development workflow in this repository.
-9. Use **Pull requests** to propose changes and incorporate them into your code from various team members. 
-10. Use **Issues** to identify and track bugs and also to communicate about various aspects of the project.
 
-## Team mangement
+## Instructions
+If this is your first time visiting our site, make an account by clicking "Create a new account with my score"! 
+    Once you create your account go back to the home page to log in and let the fun begin!   
+    If you have visited our site before, select "Log into an existing account."  
+    If you would like to update your account information please select "update an existing account" 
+    If you would like to delete your account, we are sorry to see you go, but feel free to select "Delete an existing account." 
+    To see where you stand in the leaderboard, please select "View Leaderboard"
 
-Plan to meet with your team ASAP.
-Talk through identifying roles within your team.
+    Once you create an account and are logged in you can start playing by selecting "Play the Game!
 
-Try to figure out what each of you are good at/enjoy doing and try to work out roles that incorporate that.
+A color will appear as the background of the screen and there will be an option to type in your guess for the RGB value. As you enter values for the Red, Green, and Blue components, the inside rectangle where the inputs are will change accordingly. Once you are satisfied with your guess and the inside square blends perfectly into the background, you can click "Check your answer!".
 
-Some basic roles you will want to consider:
+If your answer is incorrect, notifications will appear below each input box with hints about whether the true value is higher or lower. If your guess for the field is correct, you will see a message that says "You guessed red/blue/green correctly!"
 
-1. A review manager - someone to review pull requests and merge or reject them and manage the related discussions
-2. A plan manager - someone to keep an eye on the overall plan and keep the project tab/to-do list up to date
-3. A documentation manager - someone to keep the documentation in order and identify what is missing and needs to be documented
-4. Roles for team members to take charge or different parts of the project. Possible roles:
-    1. Front end lead
-    2. Back end lead
-    3. Databse lead
-    4. Design lead
-    5. Etc.
+You can guess multiple times until you correctly select the color! The number of guesses it takes you to guess the correct value is your score, and it will be recorded on the leaderboard. You can compare your score to the top scorers on our site!
 
-You will notice that there are more roles than people in your group.
-That is because you will all be doing a hybrid job of managing a thing while working on other things.
+## Demo Of Our Game By The Ever So Lovely Megan Nickel
 
-## Check in with instructional staff
+https://www.youtube.com/watch?v=eVLbSN4igBk 
 
-Once all the groups are together, we'll assign each group to an LA to check in with as you progress through the project.
+## Team Roles
 
-We will post that so that your team can schedule a time for an initial check-in with your assigned LA. It would be a good idea also to add your LA to your repository.
+**Note we all had a part in developing all aspects of the game below are what we each primarily focused on**
 
-## Assignment instructions
+Aubry Dreikosen: database & API
+Megan Nickel: website design & logistics
+Kay Bean: game design & implementation
+Amy Thalangsy: game design & implementation
+Emma Zhang: databse & API & documentation
 
-And that is about all you need to get started.
+ ## Installation Requirements/Instructions/Run instructions
+ To play our game you will first need to initialize the two databases by making sure you have node.js and then starting the server (node server.js)
+ Then, you will have to install browser-sync and open the webpage. The you are free to make an account in your local database and start playing the game!
+ 
+ ## Dependency List
+ cors
+ express
+ md5
+ 
+ 
 
-All the rest of the assignment instructions are available at: https://comp426.johndmart.in/assignments/99
-
-Good skill, and have fun with this!

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Update your Profile!</title>
+    <script>
+        // create account form - psots to user info
+        window.addEventListener("load", function(){
+     function updateData() {
+        const sendRequest = new XMLHttpRequest();
+        const signupInfo = new URLSearchParams(new FormData(form));
+        sendRequest.addEventListener("error", function (event){
+            alert('Update unsuccessful! Please try again.');
+        });
+        sendRequest.addEventListener("load", function (event) {
+            alert('Your account was updated');
+        });
+        sendRequest.open("PATCH", "http://localhost:5000/app/update/user/1" );
+        sendRequest.send( signupInfo );
+    }
+    const form = document.getElementById("update-form");
+    form.addEventListener("submit", function ( event ){
+        event.preventDefault();
+        updateData();
+    });
+});
+</script>
+</head>
+<!-- need to show peoples profile information-->
+<body id = "login-body">
+    <h1> Update Your Profile! </h1>
+    <form id = "update-form">
+        <div id = "login"></div>
+        <div class = "formgroup" id="username-form">
+            <label for="user">Your username*</label>
+            <input type="text" id="user"
+            name="user" required/>
+        </div>
+
+        <div class = "formgroup" id="password-form">
+            <label for="pass">Your password*</label>
+            <input type="password" id="pass"
+            name="pass" required/>
+        </div>
+        <div class = "formgroup" id="email-form">
+            <label for="email">Your email*</label>
+            <input type="text" id="email"
+            name="email" required/>
+        </div>
+        <input type="submit" value="Update"/>
+    </form>
+
+    <p>
+        The fun awaits <a href="./src/index.html">here!!</a>
+    </p>
+    <p>
+        I want to return to the <a href='./index.html'> home page</a>
+    </p>
+</body>
+</html>

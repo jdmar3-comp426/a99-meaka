@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Create An Account!</title>
+    <script src="generalDataAccess.js"></script>
+</head>
+<body id= "create-body">
+    <h1> Create your account here! </h1>
+    <form id = "create-form">
+        <div id = "create"></div>
+        <div class = "formgroup" id="username-form">
+            <label for="user">Your username*</label>
+            <input type="text" id="user"
+            name="user" required/>
+        </div>
+
+        <div class = "formgroup" id="password-form">
+            <label for="pass">Your password*</label>
+            <input type="password" id="pass"
+            name="pass" required/>
+        </div>
+
+        <div class = "formgroup" id="email-form">
+            <label for="email">Your email*</label>
+            <input type="text" id="email"
+            name="email" required/>
+        </div>
+
+        <input type="submit" value="Submit"/>
+    </form>
+    <p>
+        Thank you for creating your account! 
+    </p>
+    <p>
+        The fun awaits <a href="./src/index.html">here!!</a>
+    </p>
+    <p>
+        I want to return to the <a href='./index.html'> home page</a>
+    </p>
+</body>
+</html>

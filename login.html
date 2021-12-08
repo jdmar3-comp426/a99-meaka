@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Log In To An Account!</title>
+    <script>
+        // post to currentuser database to log the current users score
+    window.addEventListener("load", function(){
+        function sendData() {
+            const sendRequest = new XMLHttpRequest();
+            const signupInfo = new URLSearchParams(new FormData(form));
+            sendRequest.addEventListener("error", function (event){
+                alert('Log In unsuccessful! Please try again.');
+            });
+            sendRequest.addEventListener("load", function (event) {
+                alert('You are logged in!!!');
+            });
+            sendRequest.open("PATCH", "http://localhost:5000/app/update/user/logged/1" );
+            sendRequest.send( signupInfo );
+        }
+        const form = document.getElementById("login-form");
+        form.addEventListener("submit", function ( event ){
+            event.preventDefault();
+            sendData();
+        });
+    });
+    </script>
+</head>
+<body id = "login-body">
+    <h1> Log into your account here! </h1>
+    <form id = "login-form">
+        <div id = "login"></div>
+        <div class = "formgroup" id="username-form">
+            <label for="user">Your username*</label>
+            <input type="text" id="user"
+            name="user" />
+        </div>
+
+        <div class = "formgroup" id="password-form">
+            <label for="pass">Your password*</label>
+            <input type="password" id="pass"
+            name="pass" />
+        </div>
+        <input type="submit" value="Submit"/>
+    </form>
+    <p>
+        Thank you for logging into your account! 
+    </p>
+    <p>
+        The fun awaits <a href="./src/index.html">here!!</a>
+    </p>
+    <p>
+        I want to return to the <a href='./index.html'> home page</a>
+    </p>
+</body>
+</html>

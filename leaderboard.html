@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Leaderboard</title>
+    <script>
+        document.addEventListener('readystatechange', event => { 
+        if (event.target.readyState === "complete") {
+            viewUsers();
+        }
+        });
+    function viewUsers() {
+    const getRequest = new XMLHttpRequest();
+    getRequest.onload = function() { 
+    document.getElementById("leaderboard").textContent = this.responseText;
+    }
+    getRequest.open("GET", "http://localhost:5000/app/interactions");
+    getRequest.send();
+    }
+    </script>
+</head>
+<body onload="viewUsers()">
+    <h1> Leaderboard </h1>
+    <p id="leaderboard"></p>
+    
+</body>
+</html>
